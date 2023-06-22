@@ -40,18 +40,25 @@ CREATE TABLE IF NOT EXISTS public.book(
     Цена money,
     Количество экземпляров в фонде int,
     Количество страниц int,
+    id_house int,
     FOREIGN KEY (id_house) REFERENCES house (id_house) ON DELETE SET NULL
 );
 
 
 CREATE TABLE IF NOT EXISTS public.connectionbooksauthors(
     id_connection serial PRIMARY KEY,
+    id_books int,
+    id_author int,
     FOREIGN KEY (id_books) REFERENCES book (id_books) ON DELETE CASCADE,
     FOREIGN KEY (id_author) REFERENCES authors (id_author) ON DELETE SET NULL
 );
 
 CREATE TABLE IF NOT EXISTS public.formul(
     id_formuls serial PRIMARY KEY,
+    id_read int,
+    id_operations int,
+    id_sotrudniki int,
+    id_books int,
     FOREIGN KEY (id_read) REFERENCES readers (id_read) ON DELETE SET NULL,
     FOREIGN KEY (id_operations) REFERENCES operation (id_operations) ON DELETE SET NULL,
     FOREIGN KEY (id_sotrudniki) REFERENCES staff (id_sotrudniki) ON DELETE SET NULL,

@@ -15,15 +15,15 @@ CREATE TABLE IF NOT EXISTS public.staff(
 
 CREATE TABLE IF NOT EXISTS public.operation(
     id_operations serial PRIMARY KEY,
-    Дата выдачи date not null,
-    Дата возврата date
+    Дата_выдачи date,
+    Дата_возврата date
 );
 
 CREATE TABLE IF NOT EXISTS public.house(
     id_house serial PRIMARY KEY,
     Название varchar(255),
     Адрес varchar(255),
-    Дата основания date,
+    Дата_основания date,
     Индекс bigint
 );
 
@@ -35,11 +35,11 @@ CREATE TABLE IF NOT EXISTS public.authors(
 
 CREATE TABLE IF NOT EXISTS public.book(
     id_books serial PRIMARY KEY,
-    Название книги varchar(150),
-    Год издания date,
+    Название_книги varchar(150),
+    Год_издания date,
     Цена money,
-    Количество экземпляров в фонде int,
-    Количество страниц int,
+    Количество_экземпляров_в_фонде int,
+    Количество_страниц int,
     id_house int,
     FOREIGN KEY (id_house) REFERENCES house (id_house) ON DELETE SET NULL
 );
